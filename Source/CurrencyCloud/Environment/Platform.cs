@@ -7,7 +7,7 @@ namespace CurrencyCloud.Environment
     static class Platform
     {
         static Platform()
-        {
+        { /*
             Type monoRuntime = Type.GetType("Mono.Runtime");
             if (monoRuntime != null)
             {
@@ -71,12 +71,12 @@ namespace CurrencyCloud.Environment
 
                     Version = ".NET " + versionNumber;
                 }
-            }
+            }*/
         }
 
         /// <summary>
         /// Gets version number of the installed Mono or .NET framework.
         /// </summary>
-        public static readonly string Version;
+        public static readonly string Version = "NetStandard2.1";
     }
 }
