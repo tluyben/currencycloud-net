@@ -454,7 +454,7 @@ namespace CurrencyCloud
         /// <exception cref="ApiException">Thrown when API call fails.</exception>
         public async Task<Balance> GetBalanceAsync(string currency, string onBehalfOf = "")
         {
-            string parameters = string.IsNullOrWhiteSpace(onBehalfOf) ? string.Empty : "?on_behalf_of" + onBehalfOf;
+            string parameters = string.IsNullOrWhiteSpace(onBehalfOf) ? string.Empty : "?on_behalf_of=" + onBehalfOf;
             return await RequestAsync<Balance>("/v2/balances/" + currency + parameters, HttpMethod.Get, null);
         }
 
