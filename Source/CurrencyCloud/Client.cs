@@ -452,9 +452,10 @@ namespace CurrencyCloud
         /// <returns>Asynchronous task, which returns the requested balance.</returns>
         /// <exception cref="InvalidOperationException">Thrown when client is not initialized.</exception>
         /// <exception cref="ApiException">Thrown when API call fails.</exception>
-        public async Task<Balance> GetBalanceAsync(string currency)
+        public async Task<Balance> GetBalanceAsync(string currency, string onBehalfOf = "")
         {
-            return await RequestAsync<Balance>("/v2/balances/" + currency, HttpMethod.Get, null);
+            string parameters = string.IsNullOrWhiteSpace(onBehalfOf) ? string.Empty : "?on_behalf_of" + onBehalfOf;
+            return await RequestAsync<Balance>("/v2/balances/" + currency + parameters, HttpMethod.Get, null);
         }
 
         /// <summary>
