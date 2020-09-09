@@ -206,6 +206,13 @@ namespace CurrencyCloud
 
                     return JsonConvert.DeserializeObject<TResult>(resString, serializerSettings);
                 }
+                else
+                {
+                    // failed case
+                    //log to see error message
+                    string resString = await res.Content.ReadAsStringAsync();
+                    Debug.WriteLine("UTC: {0} - HTTP Response: {1}", DateTime.UtcNow, resString);
+                }
 
                 throw await ApiExceptionFactory.FromHttpResponse(res);
             };
